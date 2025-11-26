@@ -11,9 +11,9 @@ Network::Network(){}
 void Network::transmitir(unsigned int passo, unsigned int color, unsigned int position, unsigned int velocity, unsigned int pista, unsigned int padding)
 {
 	cout << "Transmitindo dados... \n";
-	unsigned int local = empacotar(passo, color, position, velocity, pista, padding); //Codificando dados
+	unsigned int local = empacotar(passo, color, position, velocity, pista, padding); 
 	cout << "\033[" << color << ";07m" << local << default << endl;
-	rede = local; // Atribuindo valor a rede
+	rede = local; 
 }
 
 unsigned int Network::receber(void)
@@ -22,7 +22,7 @@ unsigned int Network::receber(void)
 	
 	unsigned int resultado = rede; //Recebendo dados da rede
 
-	// Criando mascaras para 1, 4, 7 e 8 bits.
+	
 	unsigned int mascara4 = 0; mascara4 = ~mascara4; mascara4 = mascara4 >> 28;
 	unsigned int mascara1 = 1;
 	unsigned int mascara7 = 0; mascara7 = ~mascara7; mascara7 = mascara7 >> 25;
@@ -55,7 +55,7 @@ unsigned int Network::receber(void)
 	return rede;
 }
 
-unsigned int Network::processar(unsigned int resultado) //Processa os dados recebidos da fun��o receber e calcula a proxima posi��o
+unsigned int Network::processar(unsigned int resultado)
 {
 
 	Color color;
@@ -82,3 +82,4 @@ unsigned int Network::processar(unsigned int resultado) //Processa os dados rece
 	cout << "Proxima posição: " << posicaoNOVA << endl; color.resetarcor();
 	return posicaoNOVA;
 }
+
