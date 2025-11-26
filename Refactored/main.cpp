@@ -21,13 +21,20 @@ int main()
 	{
 		system("clear");
 		color.ajustarcor(33, 7);  cout << right; cout.width(60); cout << "Truck racing"; cout << left; cout.width(60); cout << " ";
+
+		
 		truckA.draw();
 		truckB.draw();
+
+		
 		net.transmitir(passo, truckA.color(), truckA.getPosition(), truckA.accelerate(), truckA.roadState(), 0);
 		truckA.move(net.processar(net.receber()));
+		
 		cout << "\n\n\n";
+		
 		net.transmitir(passo, truckB.color(), truckB.getPosition(), truckB.accelerate(), truckB.roadState(), 0);
 		truckB.move(net.processar(net.receber()));
+		
 		passo = passo + 1;
 		cin.get();
 	}
@@ -59,5 +66,6 @@ void endRace(Truck truckA, Truck truckB, Color color, int passo){
 	color.resetarcor(); color.ajustarcor(33, 10); cout << " " << passo;
 	cout << "\n\n";
 }
+
 
 
